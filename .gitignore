@@ -1,0 +1,8 @@
+/target/
+/.idea/
+/.project
+/.classpath
+/.settings/
+*.iml
+*.log
+src/main/resources/keypair/*.pem
