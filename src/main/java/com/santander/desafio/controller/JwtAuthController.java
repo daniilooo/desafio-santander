@@ -36,7 +36,7 @@ public class JwtAuthController {
                     new UsernamePasswordAuthenticationToken(request.username(), request.password())
             );
             Instant now = Instant.now();
-            long expiresIn = 3600; // 1h
+            long expiresIn = 3600;
             JwtClaimsSet claims = JwtClaimsSet.builder()
                     .issuer("desafio-santander")
                     .issuedAt(now)

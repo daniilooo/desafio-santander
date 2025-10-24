@@ -29,7 +29,6 @@ public class AgenciaService {
         Agencia salvo = repository.save(a);
         salvo.setNome("AGENCIA_" + salvo.getId());
         salvo = repository.save(salvo);
-        // Coloca/atualiza no cache individual
         cachePutAgencia(salvo);
         return salvo;
     }
@@ -41,12 +40,10 @@ public class AgenciaService {
 
     @Cacheable(value = "agencia", key = "#id")
     public Agencia buscarPorIdCache(Long id) {
-        // Será chamado apenas no miss do cache
         return repository.findById(id).orElseThrow();
     }
 
     public List<DistanciaResponse> calcularDistancias(double posX, double posY) {
-        // Obtém todos IDs do banco e consulta cada um via cache (popula LRU com máx 10)
         return repository.findAll().stream()
                 .map(a -> buscarPorIdCache(a.getId()))
                 .map(a -> new DistanciaResponse(
