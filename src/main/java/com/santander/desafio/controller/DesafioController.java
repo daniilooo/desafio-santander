@@ -27,8 +27,9 @@ public class DesafioController {
     }
 
     @GetMapping("/distancia")
-    public ResponseEntity<List<DistanciaResponse>> distancia(@RequestParam double posX,
-                                                             @RequestParam double posY) {
+    public ResponseEntity<List<DistanciaResponse>> distancia(
+            @RequestParam(name = "posX") double posX,
+            @RequestParam(name = "posY") double posY) {
         return ResponseEntity.ok(service.calcularDistancias(posX, posY));
     }
 }
