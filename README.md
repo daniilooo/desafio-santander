@@ -5,15 +5,15 @@
 - Maven 3.9+
 - Docker (opcional para execução em container)
 
-## Geração de Chaves RSA (JWT)
-Gere as chaves e substitua/gere os arquivos private.pem e public.pem em `src/main/resources/keypair/`:
+## Antes de subir a API é necessário fazer a geração de Chaves RSA (JWT)
+Gere as chaves e substitua / gere os arquivos private.pem e public.pem em `src/main/resources/keypair/`:
 
 ```bash
 openssl genrsa -out src/main/resources/keypair/private.pem 2048
 openssl rsa -in src/main/resources/keypair/private.pem -pubout -out src/main/resources/keypair/public.pem
 ```
-
-## Executando (Local)
+# - Opção 1
+## Executando - Local
 Dentro do diretório raiz do projeto no terminal, execute o seguinte comando:
 ```bash
 mvn spring-boot:run
@@ -21,7 +21,8 @@ mvn spring-boot:run
 - Swagger: `http://localhost:8080/swagger-ui.html`  
 - H2 console: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:desafio`)
 
-## Executando (Docker Compose)
+# - Opçõa 2
+## Executando - Docker Compose
 Dentro do diretório raiz do projeoto no terminal, execute o seguinte comando:
 ```bash
 docker compose up --build -d
